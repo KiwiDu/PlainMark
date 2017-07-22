@@ -1,0 +1,52 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-12-26, 22:51:37
+    Author     : kiwidu
+*/
+.tab-pane{
+    -fx-tab-min-width: 8em;
+    -fx-tab-min-height: 2.5em;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab{
+    -fx-focus-color:transparent;
+    -fx-faint-focus-color:transparent;
+    -fx-arc-height: 0.5em;
+    -fx-arc-width: 0;
+    -fx-background-color: #ddd;
+}
+.tab .tab-label{
+    -fx-font-size: 15px;
+    -fx-text-fill: #333;
+}
+
+.tab:selected{
+    -fx-background-color: #009688;
+}
+.tab:focused{
+    -fx-border-style: none;
+}
+.tab:selected .tab-label{
+    -fx-text-fill: #fff;
+    -fx-background-insets: 2em 2em 2em 2em;
+}
+
+.tab.Title{
+    -fx-background-color: transparent;
+}
+.tab.Title .tab-label{
+    -fx-background-color: transparent;
+    -fx-font-size: 12px;
+    -fx-text-fill: #333;
+}
+.tab.Title:disabled{
+    -fx-opacity: 1;
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+<?import java.net.URL?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="Frame" prefHeight="600" prefWidth="700"
+            fx:controller="MainFrame.Controller">
+    <top>
+        <TabPane fx:id="TopBar">
+            <tabs>
+                <Tab closable="false" disable="true" styleClass="Title" text="The Rich Text Editor"/>
+                <Tab closable="false" text="File">
+                    <content>
+                        <HBox fx:id="general_items">
+                            <Button fx:id="save_file" onAction="#saveBtn">Save</Button>
+                            <Button fx:id="new_file" onAction="#newBtn">New</Button>
+                            <Button fx:id="new_name" onAction="#newName">Rename</Button>
+                            <Button fx:id="open_file" onAction="#openBtn">Open</Button>
+                        </HBox>
+                    </content>
+                </Tab>
+                <Tab closable="false" text="Multimedia">
+                    <content>
+                        <HBox fx:id="multi_media">
+                            <Button fx:id="add_img_local" onAction="#addLocImg">Local Image</Button>
+                            <Button fx:id="add_img_ol" onAction="#addWebImg">Online Image</Button>
+                        </HBox>
+                    </content>
+                </Tab>
+                <Tab closable="false" text="Theme">
+                    <HBox fx:id="theme_items">
+                        <children>
+                            <Button fx:id="change_color" onAction="#colorSelect">Color</Button>
+                        </children>
+                    </HBox>
+                </Tab>
+                <Tab closable="false" text="About">
+                    <HBox fx:id="about">
+                        <children>
+                            <Button fx:id="information" onAction="#showInfo">Information</Button>
+                            <Button fx:id="tutorial" onAction="#initTutor">Tutorial</Button>
+                            <Button fx:id="thx" onAction="#showThx">Special Thanks</Button>
+                            <Button fx:id="debug" onAction="#renderDebug">Debugging</Button>
+                        </children>
+                    </HBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </top>
+    <center>
+        <HBox fx:id="BodyBox">
+            <children>
+                <TextArea fx:id="MainEditor" wrapText="true"/>
+                <WebView fx:id="WebViewDisplay"/>
+            </children>
+        </HBox>
+    </center>
+    <stylesheets>
+        <URL value="@style.css"/>
+        <URL value="@tab_styles.css"/>
+    </stylesheets>
+</BorderPane>

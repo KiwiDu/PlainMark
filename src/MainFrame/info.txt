@@ -1,0 +1,6 @@
+    This is a rich text editor made by Kiwi(Du Jingwei).
+    You can enjoy writing in this simple yet helpful editor,
+without worrying format capability.With the help of HTML5,
+this kind of cross-platform rich text(hyper text) can be
+read anywhere with a browser.
+    Have Fun!

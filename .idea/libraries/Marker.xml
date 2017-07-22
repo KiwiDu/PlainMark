@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Marker">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Marker/out/artifacts/Marker/Marker.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

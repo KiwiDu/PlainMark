@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Mimer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../MIMEr/out/artifacts/Mimer/Mimer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

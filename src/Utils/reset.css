@@ -1,0 +1,81 @@
+        html, body, div, span,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, address, cite, code,
+        del, q, strong, sub, sup,
+        /*b, i,*/ center, ol, ul, li{
+        	margin: 0;
+        	padding: 0.8vmin;
+        	border: 0;
+        	vertical-align: baseline;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        b{
+            font-weight: 700;
+        }
+        i {
+            font-style: italic;
+        }
+
+        html,body{
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        div{
+            margin:auto;
+            word-wrap:break-word;
+            overflow:auto;
+        }
+        @media screen
+        and (max-width: 480px){
+            div{
+                width:90vw;
+            }
+        }
+        @media screen
+        and (min-width: 480px)
+        and (max-width: 720px){
+            div{
+                width:85vw;
+            }
+        }
+        @media screen
+        and (min-width: 720px) {
+            div{
+                width:75vw;
+            }
+        }
+        blockquote, q {
+        	quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+        	content: '';
+        	content: none;
+        }
+        ul{
+            list-style: disc;
+        }
+        li ul {
+            list-style: circle;
+        }
+        h6{
+            font-size: 0.8rem;
+        }
+        h5{
+            font-size: 1.0rem;
+        }
+        h4{
+            font-size: 1.2rem;
+        }
+        h3{
+            font-size: 1.4rem;
+        }
+        h2{
+            font-size: 1.6rem;
+        }
+        h1{
+            font-size: 1.8rem;
+        }
+        h1,h2,h5,h3,h4,h5,h6{
+            font-weight: 600;
+        }

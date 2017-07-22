@@ -1,0 +1,26 @@
+
+.float{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 15px, 0.0, 0px, 3px);
+}
+.block{
+    -fx-fill: #fff;
+    -fx-background-color:#fff;
+    -fx-padding:25px;
+}
+TextFlow.p Text{
+    -fx-text-fill:#000;
+    -fx-effect:none;
+    -fx-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    -fx-font-size:18px;
+}
+.label{
+    -fx-text-fill:#000;
+    -fx-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    -fx-font-size:18px;
+}
+
+.text{
+    -fx-text-fill:#000;
+    -fx-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    -fx-font-size:18px;
+}

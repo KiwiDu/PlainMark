@@ -1,0 +1,3 @@
+Special thanks for the following open-source project:
+    Google Material Design;
+    Google fonts - Open Sans

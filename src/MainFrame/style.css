@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-12-19, 23:46:05
+    Author     : kiwid
+*/
+
+.button{/*TODO: move to **reset** */
+    -fx-background-color:-fx-body-color;
+    -fx-focus-color:transparent;
+    -fx-faint-focus-color:transparent;
+    -fx-background-radius: 0px;
+}
+.button{
+    -fx-padding: 1em 1em 1em 1em;
+}
+.button{
+    -fx-body-color:#eee;
+}
+.button:hover{
+    -fx-body-color :#00796b;
+    -fx-text-fill: #eee;
+}
+.button:focused{
+    -fx-body-color:#80CBC4;
+}
+.button:hover:focused{
+    -fx-body-color :#00796b;
+    -fx-text-fill: #eee;
+}
+.text_area{
+    -fx-background-color:-fx-body-color;
+    -fx-focus-color:transparent;
+    -fx-faint-focus-color:transparent;
+    -fx-background-radius: 0px;
+}
+.text_area:focused{
+    -fx-border-color:#555;
+    -fx-border-style:solid;
+    -fx-border-width:1;
+}
