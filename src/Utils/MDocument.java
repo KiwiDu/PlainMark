@@ -3,11 +3,9 @@ package Utils;
 
 import PopupX.ColorThemeChooser.ColorTheme;
 import javafx.scene.paint.Color;
-import main.Binary;
 import main.Mime;
-import main.MultiMime;
 
-import java.nio.charset.Charset;
+import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -24,13 +22,13 @@ public class MDocument {
     private String title;
     private String source;
     private String rendered;
-    private MultiMime resources;
+    private ArrayDeque<Mime> resources;
 
     public MDocument(String _title, String _source, String _rendered) {
         title = Objects.requireNonNull(_title);
         source = Objects.requireNonNull(_source);
         rendered = Objects.requireNonNull(_rendered);
-        resources = new MultiMime(title);
+        resources = new ArrayDeque<Mime>(16);
     }
 
     public String getTitle() {
@@ -38,7 +36,7 @@ public class MDocument {
     }
 
     public void setTitle(String _title) {
-        title=Objects.requireNonNull(_title);
+        title = Objects.requireNonNull(_title);
     }
 
     public String getSource() {
@@ -73,12 +71,6 @@ public class MDocument {
                 .r("%basic-css%", basic_css)
                 .toString();
         return result;
-    }
-
-    public String toRenderedMHT(ColorTheme theme) {
-        byte[] html = toRenderedHTML(theme).getBytes(Charset.forName("utf-8"));
-        resources.add(new Mime(new Binary(html, String.format("http://local/%s.html", getTitle()))));
-        return resources.toString();
     }
 
     private String getHtmlTemplate() {

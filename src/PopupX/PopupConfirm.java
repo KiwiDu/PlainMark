@@ -26,14 +26,18 @@ public class PopupConfirm extends Popups {
     private PopupConfirm() {
     }
 
-    public static void ask(Window owner, String ques, String defaultV, Consumer<String> action) {
+    public static void ask(Window owner, String ques, String defaultV, Consumer<String> action, Consumer<Exception> onFail) {
         PopupConfirm dialog = new PopupConfirm();
         dialog.label.setText(ques + "\t");
         dialog.input.setText(defaultV);
         dialog.getPane().addAll(dialog.label, dialog.input, getDefaultActionButton(
                 dialog,
                 (e) -> {
-                    action.accept(dialog.input.getText());
+                    try {
+                        action.accept(dialog.input.getText());
+                    } catch (Exception exception) {
+                        onFail.accept(exception);
+                    }
                 }
         ));
         dialog.show(owner);

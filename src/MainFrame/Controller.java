@@ -22,7 +22,6 @@ import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-import main.Binary;
 import main.Mime;
 import main.Parser;
 
@@ -43,6 +42,7 @@ public class Controller implements Initializable {
     private static boolean debugging = false;
     private static StringProperty title = new SimpleStringProperty("Untitled");
     private static ColorThemeChooser.ColorTheme theme = DEFAULT_THEME;
+
     @FXML
     private WebView WebViewDisplay;
     @FXML
@@ -64,28 +64,17 @@ public class Controller implements Initializable {
         FileChooser popup = new FileChooser();
         popup.setTitle("Save document:");
         popup.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Document", "*.html", "*.htm"),
-                new FileChooser.ExtensionFilter("Mime Document", "*.mhtml", "*.mht"));
+                new FileChooser.ExtensionFilter("Document", "*.html", "*.htm"));
         popup.setInitialFileName(title.get() + ".html");
         File file = popup.showSaveDialog(getRoot());
         if (file == null) {
             return;
         }
         try {
-            switch (popup.getSelectedExtensionFilter().getDescription()) {
-                case "Document": {
-                    Files.write(file.toPath(), new MDocument(title.get(), MainEditor.getText(), rendered).toRenderedHTML(theme).getBytes());
-                }
-                break;
-                case "Mime Document": {
-                    Files.write(file.toPath(), new MDocument(title.get(), MainEditor.getText(), rendered).toRenderedMHT(theme).getBytes());
-                }
-                break;
-                default:
-                    break;
-            }
+            Files.write(file.toPath(), new MDocument(title.get(), MainEditor.getText(), rendered).toRenderedHTML(theme).getBytes());
         } catch (IOException e) {
             e.printStackTrace();
+            showTxt("An error encounted : " + e.getMessage());
         }
     }
 
@@ -94,12 +83,11 @@ public class Controller implements Initializable {
         FileChooser popup = new FileChooser();
         popup.setTitle("Open document:");
         popup.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Document", "*.html", "*.htm"),
-                new FileChooser.ExtensionFilter("Mime Document", "*.mhtml", "*.mht"));
+                new FileChooser.ExtensionFilter("Document", "*.html", "*.htm"));
         popup.setInitialFileName(title.get() + ".html");
         File file = popup.showOpenDialog(getRoot());
         if (file == null) {//cancelled by user or file corruption
-            return;
+            return;//silent end
         }
         MDFileReader reader = new MDFileReader(file);
         title.set(reader.readTitle());
@@ -108,13 +96,17 @@ public class Controller implements Initializable {
 
     @FXML
     public void newBtn() {
-        PopupConfirm.ask(this.getRoot(), "New:", title.get(), title::set);
+        PopupConfirm.ask(this.getRoot(), "New:", title.get(), title::set, (e) -> {
+            title.set("Untitled");
+        });
         MainEditor.setText("");
     }
 
     @FXML
     public void newName() {
-        PopupConfirm.ask(this.getRoot(), "New:", title.get(), title::set);
+        PopupConfirm.ask(this.getRoot(), "New:", title.get(), title::set, (e) -> {
+            title.set("Untitled");
+        });
     }
 
     @Override
@@ -185,7 +177,7 @@ public class Controller implements Initializable {
     private void insertImg(String url) {
         int pos = MainEditor.getAnchor();
         String s = MainEditor.getText();
-        String str = "![" + url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')) + "](" + url + ")";
+        String str = String.format("![%s](%s)", url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')), url);
         MainEditor.setText(s.substring(0, pos) + str + s.substring(pos));
     }
 
@@ -195,15 +187,20 @@ public class Controller implements Initializable {
         popup.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Picture", "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif"));
         List<File> files = popup.showOpenMultipleDialog(this.getRoot());
+        if (files.isEmpty()) {
+            System.out.println("No files chosen");
+            return;
+        }
         for (File f : files) {
-            Mime m = new Mime(new Binary(f));
-            insertImg(m.getVirtualPath());
-
+            Mime m = new Mime(f.toPath());
+            insertImg(f.getPath());
         }
     }
 
     public void addWebImg() {
-        PopupConfirm.ask(this.getRoot(), "Enter URL:", "", this::insertImg);
+        PopupConfirm.ask(this.getRoot(), "Enter URL:", "", this::insertImg, (e) -> {
+            System.out.println("Empty input or failure");
+        });
     }
 
     public void renderDebug(ActionEvent actionEvent) {

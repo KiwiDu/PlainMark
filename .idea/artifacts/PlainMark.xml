@@ -1,0 +1,32 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="PlainMark">
+    <output-path>$PROJECT_DIR$/out/artifacts/PlainMark</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="alias" value="" />
+        <option name="appClass" value="MainFrame.Main" />
+        <option name="convertCss2Bin" value="true" />
+        <option name="description" value="" />
+        <option name="enabledSigning" value="true" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="icons">
+          <JavaFxApplicationIcons>
+            <option name="linuxIcon" value="$PROJECT_DIR$/src/MainFrame/icon.png" />
+          </JavaFxApplicationIcons>
+        </option>
+        <option name="keystore" value="" />
+        <option name="title" value="MarkDownEditor" />
+        <option name="vendor" value="" />
+        <option name="version" value="1.1" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="PlainMark.jar">
+        <element id="module-output" name="PlainMark" />
+      </element>
+      <element id="extracted-dir" path="$PROJECT_DIR$/../IconLoader/out/artifacts/IconLoader/IconLoader.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Marker/out/artifacts/Marker/Marker.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../MIMEr/out/artifacts/Mimer/Mimer.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

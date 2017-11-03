@@ -51,7 +51,7 @@
     <center>
         <HBox fx:id="BodyBox">
             <children>
-                <TextArea fx:id="MainEditor" wrapText="true"/>
+                <TextArea fx:id="MainEditor" wrapText="true" />
                 <WebView fx:id="WebViewDisplay"/>
             </children>
         </HBox>
